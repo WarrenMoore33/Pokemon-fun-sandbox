@@ -168,7 +168,7 @@ export default function Home() {
             <div className="d-flex pokeball-section__ball text-align-center justify-content-center w-100">
               <h2 className="pokeball__warning text-center">
                 {!isWrongPokemon
-                  ? `No Pokemon Selected`
+                  ? `No Pokemon Selected 👀`
                   : `Please Enter a Valid Pokemon Name!`}
               </h2>
             </div>
