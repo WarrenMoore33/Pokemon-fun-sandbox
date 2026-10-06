@@ -1,0 +1,189 @@
+input {
+  padding: 7px;
+  border: 2px solid turquoise;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: -4px 4px 4px #ccc;
+}
+button {
+  position: relative;
+  border: 2px solid turquoise;
+  padding: 7px 12px;
+  border-radius: 4px;
+  box-shadow: -4px 4px 4px #ccc;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  &:hover {
+    background: teal;
+    color: white;
+  }
+  &:active {
+    background: black;
+    color: white;
+    box-shadow: none;
+    right: 2px;
+    top: 2px;
+  }
+}
+
+.pokeball-section {
+  &__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__ball {
+    position: absolute;
+  }
+  &__title {
+    strong {
+      text-transform: uppercase;
+      font-size: 1.5rem;
+  -webkit-text-stroke: 1px #ccc; /* Width and outline color */
+    }
+  }
+}
+// Pokeball styling
+.pokeball {
+  width: 500px;
+  height: 500px;
+  border: 10px solid black;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: -20px 11px 22px #333;
+  &__top {
+    background: red;
+    flex: 1;
+    position: relative;
+    border-bottom: 10px solid black;
+    overflow: hidden;
+    z-index: 2;
+    .circle {
+      border: 10px solid black;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      background-color: white;
+      left: calc(50% - 50px);
+      bottom: -60px;
+    }
+    &--open {
+      transition: 1.2s;
+      bottom: 150px;
+      animation: slideUp 2.5s ease-out forwards;
+    }
+  }
+  &__bottom {
+    flex: 1;
+    background: white;
+    position: relative;
+    border-top: 10px solid black;
+    overflow: hidden;
+    z-index: 2;
+    .circle {
+      border: 10px solid black;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      background-color: white;
+      left: calc(50% - 50px);
+      top: -60px;
+    }
+    &--open {
+      transition: 1.2s;
+      top: 150px;
+      animation: slideDown 2.5s ease-out forwards;
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    /* Start 100% below its original position and invisible */
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    /* Move to its original position and become fully visible */
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  from {
+    /* Start 100% below its original position and invisible */
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    /* Move to its original position and become fully visible */
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes tiltUpRight {
+  from {
+    /* Start tilted 15 degrees down and invisible */
+    transform: rotate(15deg) translateY(30px);
+    opacity: 0;
+  }
+  to {
+    /* Reset to perfectly straight and fully visible */
+    transform: rotate(0deg) translateY(0);
+    opacity: 1;
+  }
+}
+.wavy-color-text {
+  /* 1. Create a multi-color gradient that repeats its first color at the end for a seamless loop */
+  background: linear-gradient(
+    90deg,
+    #ff0002,
+    orange,
+    yellow,
+    turquoise,
+    #3333ff,
+    #ff00cc,
+    #00ffcc,
+    #fff,
+    black
+  );
+
+  /* 2. Stretch the background size so there is room to slide/wave it */
+  background-size: 300% auto;
+
+  /* 3. Clip the background color so it only fills the text characters */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 4. Make the default text color transparent so the background shines through */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* 5. Attach the looping animation */
+  animation: wave-colors 15s linear infinite;
+}
+
+/* 6. Move the background position horizontally to create the shifting wave effect */
+@keyframes wave-colors {
+  0% {
+    background-position: 300% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+/* 7. Respect accessibility settings for users who prefer no motion */
+@media (prefers-reduced-motion: reduce) {
+  .wavy-color-text {
+    animation: none;
+    background-position: 0% center;
+  }
+}

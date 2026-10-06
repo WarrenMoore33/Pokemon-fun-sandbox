@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +25,35 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header>
+          <div className="container">
+            <h1 className="">
+              Choose Your Pokemon <span>and stuff</span>
+            </h1>
+          </div>
+          <nav>
+            <ul className="container d-flex justify-content-end gap-2">
+              <li>
+                <Link href="">Home</Link>
+              </li>
+              <li>
+                <Link href="/choose/">Pokedex</Link>
+              </li>
+              <li>
+                <Link href="">Let's Fight</Link>
+              </li>
+              <li>
+                <Link href="">IDK</Link>
+              </li>
+              <li>
+                <Link href="">About</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }

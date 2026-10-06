@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,97 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* 1. Organize into a low-priority cascade layer to prevent specificity wars */
+@layer reset {
+  /* 2. Use a more intuitive box-sizing model across all elements */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* 3. Remove default margins (except dialogs) */
+  *:not(dialog) {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 4. Enable animations for intrinsic sizes (like height: auto or fit-content) */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+
+  /* 5. Set up root body layout and typography defaults */
+  body {
+    min-height: 100svh; /* Use small viewport height for mobile browsers */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Smoother text rendering */
+  }
+
+  /* 6. Form element baseline overrides */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit; /* Inherit typography from parents rather than browser styles */
+  }
+
+  textarea {
+    resize: vertical; /* Prevent horizontal layout breaking */
+  }
+
+  /* 7. Improve media element behavior */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    image-rendering: pixelated; 
+  }
+
+  /* 8. Modern line wrapping to prevent typography orphans and overflows */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  /* 9. Prevent content shifting when a scrollbar appears */
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  /* 10. Clean up tables */
+  table {
+    border-collapse: collapse;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
 }
