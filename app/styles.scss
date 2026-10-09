@@ -44,6 +44,16 @@ button {
     }
   }
 }
+// Trainer styling
+.trainer {
+  &__name {
+
+  }
+  &__image {
+    width: auto;
+    height: auto;
+  }
+}
 // Pokeball styling
 .pokeball {
   width: 500px;

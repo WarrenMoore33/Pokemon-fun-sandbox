@@ -35,19 +35,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <nav>
             <ul className="container d-flex justify-content-end gap-2">
               <li>
-                <Link href="">Home</Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/choose/">Pokedex</Link>
+                <Link href="/pokedex">Pokedex</Link>
               </li>
               <li>
-                <Link href="">Let's Fight</Link>
+                <Link href="/fight">Let's Fight</Link>
               </li>
               <li>
-                <Link href="">IDK</Link>
+                <Link href="/idk">IDK</Link>
               </li>
               <li>
-                <Link href="">About</Link>
+                <Link href="/about">About</Link>
               </li>
             </ul>
           </nav>
